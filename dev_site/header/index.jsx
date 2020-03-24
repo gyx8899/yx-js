@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Author from '../config/author';
+import {Author, Site} from '../config/index';
 
 import Logo from '../assets/images/logo.svg';
 import Profile from '../assets/images/profile.jpg';
@@ -11,6 +11,7 @@ const Header = () => (
 			<Link to="/">
 				<h1>
 					<img className="img-logo" src={Logo} alt="NPM logo"/>
+					<span className="title">{Site.name}</span>
 				</h1>
 			</Link>
 			<div>

@@ -1,17 +1,16 @@
-# npm template
-NPM package project template
+# Readme
 
-## Publish steps
+### Installation
 
-- Login: add user with your `Username`, `Password`, `Email`
-```shell script
-# First time publish
-npm adduser
-# Other times publish
-npm login
+```cmd
+npm install @daybyday/yx-js --save
 ```
 
-- Publish in your git gui or click publish.sh bash file
-```shell script
-npm publish
+### Importing
+
+```jsx
+import xxx from '@daybyday/yx-js';
 ```
+
+### Examples
+
