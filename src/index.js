@@ -18,27 +18,27 @@ import * as string from './util/String';
 import * as tool from './util/Tool';
 import * as url from './util/URL';
 
-import Event from './components/Event';
-import FullScreen from './components/FullScreen';
-import Graph from './components/Graph';
-import HeightTranslation from './components/HeightTranslation';
-import HoverSelect from './components/HoverSelect';
-import MVVM from './components/MVVM';
-import MVVMComponent from './components/MVVMComponent';
-import mix from './components/mix';
-import NotificationHelper from './components/NotificationHelper';
-import ObserverAttribute from './components/ObserverAttribute';
-import ObserverClassName from './components/ObserverClassName';
-import ObserverMutation from './components/ObserverMutation';
-import ObserverNode from './components/ObserverNode';
-import ObserverObject from './components/ObserverObject';
-import PopupDismiss from './components/PopupDismiss';
-import ResponsiveIFrame from './components/ResponsiveIFrame';
-import SharedWorkers from './components/SharedWorkers';
-import WebWorker from './components/WebWorker';
+import Event from './class/Event';
+import FullScreen from './class/FullScreen';
+import Graph from './class/Graph';
+import HeightTranslation from './class/HeightTranslation';
+import HoverSelect from './class/HoverSelect';
+import MVVM from './class/MVVM';
+import MVVMComponent from './class/MVVMComponent';
+import mix from './class/mix';
+import NotificationHelper from './class/NotificationHelper';
+import ObserverAttribute from './class/ObserverAttribute';
+import ObserverClassName from './class/ObserverClassName';
+import ObserverMutation from './class/ObserverMutation';
+import ObserverNode from './class/ObserverNode';
+import ObserverObject from './class/ObserverObject';
+import PopupDismiss from './class/PopupDismiss';
+import ResponsiveIFrame from './class/ResponsiveIFrame';
+import SharedWorkers from './class/SharedWorkers';
+import WebWorker from './class/WebWorker';
 
 const YX = {
-  Util: {
+  util: {
     algorithm,
     animateElement,
     animateTiming,
@@ -59,23 +59,26 @@ const YX = {
     tool,
     url,
   },
-  FullScreen,
-  Graph,
-  HeightTranslation,
-  HoverSelect,
-  mix,
-  MVVM,
-  MVVMComponent,
-  NotificationHelper,
-  ObserverAttribute,
-  ObserverClassName,
-  ObserverMutation,
-  ObserverNode,
-  ObserverObject,
-  PopupDismiss,
-  ResponsiveIFrame,
-  SharedWorkers,
-  WebWorker,
+  class: {
+    Event,
+    FullScreen,
+    Graph,
+    HeightTranslation,
+    HoverSelect,
+    mix,
+    MVVM,
+    MVVMComponent,
+    NotificationHelper,
+    ObserverAttribute,
+    ObserverClassName,
+    ObserverMutation,
+    ObserverNode,
+    ObserverObject,
+    PopupDismiss,
+    ResponsiveIFrame,
+    SharedWorkers,
+    WebWorker,
+  },
   event: new Event(),
 };
 
