@@ -38,7 +38,6 @@ html, body {
 			font-weight: 400;
 
 			a {
-				color: #fff;
 				text-decoration: none;
 				display: block;
 			}
@@ -167,22 +166,6 @@ html, body {
 	padding-top: 20px;
 	@media (max-width: 1360px) {
 		width: 75%;
-	}
-
-	h2 {
-		font-size: 28px;
-		color: #1f2d3d;
-		margin: 0;
-	}
-
-	h3 {
-		font-size: 22px;
-		margin: 45px 0 15px;
-	}
-
-	h2, h3, h4, h5 {
-		font-weight: normal;
-		color: #1f2f3d;
 	}
 
 	pre {

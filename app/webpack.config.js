@@ -18,9 +18,7 @@ new WebpackDevServer(webpack({
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin({
-			title: 'UI Component test site',
-		}),
+		new HtmlWebpackPlugin(),
 	],
 	resolve: {
 		extensions: ['.js', '.jsx'],
@@ -34,7 +32,8 @@ new WebpackDevServer(webpack({
 				test: /\.js(x)?$/,
 				loader: 'babel-loader',
 				include: [
-					path.join(__dirname, '../dev_site'),
+					path.join(__dirname, '../app'),
+					path.join(__dirname, '../site'),
 					path.join(__dirname, '../src'),
 				],
 				options: {
