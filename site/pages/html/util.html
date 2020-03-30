@@ -16,7 +16,7 @@
 <script src="https://gyx8899.github.io/YX-WebThemeKit/fn-pre-loader/preLoader.js?type=split-ssc"></script>
 
 <main>
-
+	<div id="demoWrap"></div>
 </main>
 
 <!-- Script Common *** JS -->
@@ -27,7 +27,7 @@
 
 <script type="module" src="../../../src/util/Algorithm.js"></script>
 
-<script type="module">
+<script type="module" data-toggle="previewCode" data-target="#demoWrap">
 	import {getRandomNumber, getRandomNumbers, getNonRedundantRandomNumbers} from '../../../src/util/Algorithm.js';
 	console.log('getRandomNumber(5)', getRandomNumber(5));
 	console.log('getRandomNumbers(4, 4, 3)', getRandomNumbers(4, 4, 3));

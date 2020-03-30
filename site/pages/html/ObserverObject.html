@@ -12,9 +12,9 @@
 <body>
 	<h1>ObjectObserver</h1>
 	<div id="demoWrap"></div>
-<script type="module" src="../../../src/components/ObserverObject.js"></script>
+<script type="module" src="../../../src/class/ObserverObject.js"></script>
 <script type="module" data-toggle="previewCode" data-target="#demoWrap">
-	import ObserverObject from "../../../src/components/ObserverObject.js";
+	import ObserverObject from "../../../src/class/ObserverObject.js";
 	var onChange = function (key, nextValue, prevValue, target) {
 		console.log('onChange: ' + window.Proxy ? JSON.stringify(target) : 'Non-Proxy' + ' - ' + key + ' - ' + value);
 	};
