@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const port = 3020;
 
 new WebpackDevServer(webpack({
-	devtool: 'eval',
+	devtool: 'cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:' + port,
 		'webpack/hot/only-dev-server',
@@ -16,6 +16,8 @@ new WebpackDevServer(webpack({
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: 'bundle.js',
+		chunkFilename: 'scripts/[name].chunk.js',
+		publicPath: '/',
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),

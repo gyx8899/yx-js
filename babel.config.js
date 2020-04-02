@@ -8,14 +8,7 @@ module.exports = {
 				'@babel/preset-env',
 				'@babel/preset-react',
 			],
-			plugins: [
-				[
-					'@babel/plugin-transform-runtime',
-					{
-						useESModules: true,
-					},
-				],
-			],
+			plugins: ['@babel/plugin-transform-runtime'],
 		},
 		test: {
 			presets: [
@@ -29,7 +22,6 @@ module.exports = {
 				],
 				'@babel/preset-react',
 			],
-			plugins: ['transform-es2015-modules-commonjs'],
 		},
 		production: {
 			presets: [
@@ -42,14 +34,7 @@ module.exports = {
 				],
 				'@babel/preset-react',
 			],
-			plugins: [
-				'@babel/runtime',
-				{
-					targets: {
-						esmodules: true,
-					},
-				},
-			],
+			plugins: ['@babel/plugin-transform-runtime'],
 		},
 	},
 };
