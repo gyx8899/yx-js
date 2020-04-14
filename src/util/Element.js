@@ -256,6 +256,7 @@ export {
 	matches,
 	closest,
 	hasClosest,
+	parentsUntil,
 	convertNodeListToArray,
 	insertStyleToHead,
 	createTagElement,

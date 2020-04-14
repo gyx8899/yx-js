@@ -6,4 +6,4 @@ export {
 	Author,
 	Npm,
 	Github,
-}
+};
