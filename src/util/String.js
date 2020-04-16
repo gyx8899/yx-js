@@ -5,7 +5,8 @@
  * @return {string}
  */
 function titleCase(string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0)
+      .toUpperCase() + string.slice(1);
 }
 
 /**
@@ -14,15 +15,15 @@ function titleCase(string) {
  * @returns {void|string}
  */
 function escapeHTML(str) {
-	const map = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#039;',
-	};
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    '\'': '&#039;',
+  };
 
-	return str.replace(/[&<>"']/g, (m) => map[m]);
+  return str.replace(/[&<>"']/g, (m) => map[m]);
 }
 
 /**
@@ -31,14 +32,17 @@ function escapeHTML(str) {
  * @return {*}
  */
 function escapeJS(str) {
-	return escapeHTML(str.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\\"').replace(/[']/g, "\\\'"));
+  return escapeHTML(str.replace(/[\\]/g, '\\\\')
+      .replace(/["]/g, '\\\"')
+      .replace(/[']/g, '\\\''));
 }
 
-const revertString = string => [...string].reverse().join('');
+const revertString = string => [...string].reverse()
+    .join('');
 
 export {
-	titleCase,
-	escapeHTML,
-	escapeJS,
-		revertString,
+  titleCase,
+  escapeHTML,
+  escapeJS,
+  revertString,
 };
