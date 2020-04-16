@@ -34,8 +34,11 @@ function escapeJS(str) {
 	return escapeHTML(str.replace(/[\\]/g, '\\\\').replace(/["]/g, '\\\"').replace(/[']/g, "\\\'"));
 }
 
+const revertString = string => [...string].reverse().join('');
+
 export {
 	titleCase,
 	escapeHTML,
 	escapeJS,
+		revertString,
 };
