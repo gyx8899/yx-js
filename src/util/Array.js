@@ -118,3 +118,19 @@ export {
 	spliceItem,
 	getArrayString,
 }
+
+export const maxElementsFromArray = (array, number = 1) => {
+	return [...array].sort((x, y) => y - x).slice(0, number);
+};
+
+export const elementsAreEqual = (array) => {
+	return array.every((item) => array[0] === item);
+};
+
+export const sumOfNumbers = (numbers) => {
+	return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+};
+
+export const averageOfNumbers = (...numbers) => {
+	return sumOfNumbers(numbers) / numbers.length;
+};

@@ -1,5 +1,5 @@
 /* eslint-disable */
-function isPrime(number) {
+export const isPrime = (number) => {
 	if (number === 0 || number === 1) {
 		return true;
 	}
@@ -9,8 +9,12 @@ function isPrime(number) {
 		}
 	}
 	return true;
-}
+};
 
-export {
-	isPrime,
-}
+export const factorialOfNumber = (number) => ((number < 0)
+		? (() => {
+			throw new Error(`No negative Number: ${number}`);
+		})()
+		: (number <= 1
+				? 1
+				: number * factorialOfNumber(number - 1)));

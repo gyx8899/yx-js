@@ -11,6 +11,8 @@ export * from './util/IS';
 export * from './util/Load';
 export * from './util/Math';
 export * from './util/Navigator';
+export * from './util/Number';
+export * from './util/Object';
 export * from './util/Page';
 export * from './util/Plugin';
 export * from './util/RegExp';

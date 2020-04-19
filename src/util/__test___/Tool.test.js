@@ -1,25 +1,25 @@
-import {consoleLog} from '../../../src/util/Tool';
+import {consoleLog} from '../Tool';
 
-describe('Util Tool', function () {
-	beforeEach(function () {
+describe('Util Tool', () => {
+	beforeEach(() => {
 		global.console = {
 			warn: jest.fn(),
 			log: jest.fn(),
 			groupEnd: jest.fn(),
 			group: jest.fn(),
-			table: jest.fn()
-		}
+			table: jest.fn(),
+		};
 	});
-	afterEach(function () {
+	afterEach(() => {
 
 	});
 
 	// API test unit
-	test('consoleLog', function () {
+	test('consoleLog', () => {
 		function testLog(a, b, c, d) {
 			return consoleLog(...arguments);
 		}
-		let args = [1, '2', [3, '3'], {4: 44}];
+		const args = [1, '2', [3, '3'], {4: 44}];
 		expect(testLog(...args)).toBe('testLog');
 		expect(global.console.log).toHaveBeenCalledWith(expect.any(String), expect.any(String), 'testLog:', ...args);
 	});
