@@ -10,7 +10,7 @@
  * window 的 resize、scroll、mousedown、mousemove、keyup、keydown
  * From: https://yuchengkai.cn/docs/frontend/#%E9%98%B2%E6%8A%96
  */
-function debounce(func, wait = 50, immediate = true) {
+export function debounce(func, wait = 50, immediate = true) {
 	let timer;
 	let context;
 	let args;
@@ -62,7 +62,7 @@ function debounce(func, wait = 50, immediate = true) {
  * window 的 resize、scroll、mousedown、mousemove、keyup、keydown
  * From: https://yuchengkai.cn/docs/frontend/#%E8%8A%82%E6%B5%81
  */
-function throttle(func, wait, options) {
+export function throttle(func, wait, options) {
 	let context, args, result;
 	let timeout = null;
 	// 之前的时间戳
@@ -118,7 +118,7 @@ function throttle(func, wait, options) {
 	};
 }
 
-function copyElementToClipboard(copiedElement, callback) {
+export function copyElementToClipboard(copiedElement, callback) {
 	let range = document.createRange();
 	range.selectNode(copiedElement);
 
@@ -141,7 +141,7 @@ function copyElementToClipboard(copiedElement, callback) {
 	selection.removeAllRanges();
 }
 
-function copyStringToClipboard(copiedString, callback) {
+export function copyStringToClipboard(copiedString, callback) {
 	let bodyBackground = document.body.style.background,
 			addDomToBody = (dom, id) => {
 				let copiedElement = document.createElement('div');
@@ -168,7 +168,7 @@ function copyStringToClipboard(copiedString, callback) {
  * @param params
  * @return {Promise<any>}
  */
-function call(method, params) {
+export function call(method, params) {
 	let callMethod = (callers, thisArg) => {
 		let caller = callers.shift();
 		thisArg = thisArg ? thisArg : (self || this || window);
@@ -193,7 +193,7 @@ function call(method, params) {
  * @param count
  * @return {Function}
  */
-function timeChunk(ary, fn, count) {
+export function timeChunk(ary, fn, count) {
 	let timer = null,
 			array = [...ary],
 			start = () => {
@@ -214,7 +214,7 @@ function timeChunk(ary, fn, count) {
 /**
  * Custom console log modal in function
  */
-function _consoleLog() {
+export function _consoleLog() {
 	let fnStyle = {};
 	const STYLES = [
 				'font-size: 14px; color: #8665D5',
@@ -264,14 +264,14 @@ function _consoleLog() {
 	}
 }
 
-const consoleLog = _consoleLog();
+export const consoleLog = _consoleLog();
 
 /**
  * Dynamic set callback function in window
  * @param typeName
  * @returns {*}
  */
-function setCallback(typeName) {
+export function setCallback(typeName) {
 	let typeCallback = getCallbackName(typeName);
 	if (!window[typeCallback]) {
 		window[typeCallback] = function (data) {
@@ -287,7 +287,7 @@ function setCallback(typeName) {
  * @param typeName
  * @returns {string}
  */
-function getCallbackName(typeName) {
+export function getCallbackName(typeName) {
 	return typeName + "Callback";
 }
 
@@ -297,7 +297,7 @@ function getCallbackName(typeName) {
  * @param out
  * @returns {*|{}}
  */
-function deepExtend(out) // arguments: (source, source1, source2, ...)
+export function deepExtend(out) // arguments: (source, source1, source2, ...)
 {
 	out = out || {};
 
@@ -329,7 +329,7 @@ function deepExtend(out) // arguments: (source, source1, source2, ...)
  * @param param1
  * @param param2
  */
-function parameterArrayToItem(fn, param1, param2) {
+export function parameterArrayToItem(fn, param1, param2) {
 	let param2IsArray = Array.isArray(param2),
 			param2ArrayLength = param2IsArray && param2.length || 0;
 	for (let i = 0, length = param1.length; i < length; i++) {
@@ -339,7 +339,7 @@ function parameterArrayToItem(fn, param1, param2) {
 }
 
 // Anchor
-function anchorSmoothScroll (selectorNot) {
+export function anchorSmoothScroll (selectorNot) {
 	let $anchors = $('a[href*="#"]').not('[href="#"]').not('[href="#0"]');
 	if (typeof selectorNot === "string")
 	{
@@ -368,23 +368,54 @@ function anchorSmoothScroll (selectorNot) {
 }
 
 // Scroll
-const scrollTop = () => {
+export const scrollTop = () => {
 	(document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 };
 
+export function xml2Json(xml) {
+	// Create the return object
+	let obj = {};
 
-export {
-	debounce,
-	throttle,
-	copyElementToClipboard,
-	copyStringToClipboard,
-	call,
-	timeChunk,
-	consoleLog,
-	setCallback,
-	getCallbackName,
-	deepExtend,
-	parameterArrayToItem,
-	anchorSmoothScroll,
-	scrollTop,
-};
+	if (xml.nodeType === 1) { // ELEMENT_NODE
+		// do attributes
+		if (xml.attributes.length > 0) {
+			obj["@attributes"] = {};
+			for (let j = 0; j < xml.attributes.length; j++) {
+				const attribute = xml.attributes.item(j);
+				obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+			}
+		}
+	} else if (xml.nodeType === 3) { // TEXT_NODE
+		obj = xml.nodeValue;
+	} else if (xml.nodeType === 4) { // CDATA_SECTION_NODE
+		obj = xml.nodeValue;
+	}
+	// nodeType
+	// 1: ELEMENT_NODE, 一个 元素 节点，例如 <p> 和 <div>。
+	// 3: TEXT_NODE, Element 或者 Attr 中实际的  文字。
+	// 4: CDATA_SECTION_NODE, 一个 CDATASection，例如 <!CDATA[[ … ]]>。
+	// 7: PROCESSING_INSTRUCTION_NODE, 一个用于XML文档的 ProcessingInstruction ，例如 <?xml-stylesheet ... ?> 声明。
+	// 8: COMMENT_NODE, 一个 Comment 节点。
+	// 9: DOCUMENT_NODE, 一个 Document 节点。
+	// 10:DOCUMENT_TYPE_NODE, 描述文档类型的 DocumentType 节点。例如 <!DOCTYPE html>  就是用于 HTML5 的。
+	// 11:DOCUMENT_FRAGMENT_NODE, 一个 DocumentFragment 节点
+
+	// do children
+	if (xml.hasChildNodes()) {
+		for(let i = 0; i < xml.childNodes.length; i++) {
+			const item = xml.childNodes.item(i);
+			const nodeName = item.nodeName;
+			if (typeof(obj[nodeName]) === "undefined") {
+				obj[nodeName] = xml2Json(item);
+			} else {
+				if (typeof(obj[nodeName].push) === "undefined") {
+					const old = obj[nodeName];
+					obj[nodeName] = [];
+					obj[nodeName].push(old);
+				}
+				obj[nodeName].push(xml2Json(item));
+			}
+		}
+	}
+	return obj;
+}
