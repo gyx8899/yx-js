@@ -5,11 +5,13 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
+    "git-commit-push": "cd ../yx-env && git-commit-push.sh yx-js",
     "prepack": "npm run lint && npm run test && npm run build",
     "build": "rollup -c",
     "start": "node webpack.config.js",
     "lint": "eslint src/**/*.js",
-    "test": "cross-env BABEL_ENV=test jest --passWithNoTests --coverage"
+    "test": "cross-env BABEL_ENV=test jest --passWithNoTests --coverage",
+    "publish": "publish.sh"
   },
   "repository": {
     "type": "git",
