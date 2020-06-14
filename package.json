@@ -1,11 +1,11 @@
 {
-  "name": "@daybyday/npm-template",
-  "version": "1.0.0",
-  "description": "Template for npm package",
+  "name": "@daybyday/yx-js",
+  "version": "0.1.0",
+  "description": "YX-JS: common js Functions, ES Class.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
-    "git-commit-push": "cd ../yx-env && git-commit-push.sh yx-js",
+    "commit": "cd ../yx-env && git-commit-push.sh yx-js",
     "prepack": "npm run lint && npm run test && npm run build",
     "build": "rollup -c",
     "start": "node webpack.config.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gyx8899/npm-template.git"
+    "url": "https://github.com/gyx8899/yx-js.git"
   },
   "keywords": [
     "YX",
