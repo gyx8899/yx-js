@@ -1,8 +1,9 @@
-export const numberConvertToArray = (number) => {
-  return [...`${number}`].map((num) => num / 1);
-};
+export const numberConvertToArray = (number) => ([...`${number}`].map((num) => num / 1));
 
 export const isNumberPowerOfTwo = (number) => {
-  // eslint-disable-next-line no-bitwise
-  return !!number && (number & (number - 1)) === 0;
+  if (number !== undefined && number !== null) {
+    // eslint-disable-next-line no-bitwise
+    return (number & (number - 1)) === 0;
+  }
+  return false;
 };

@@ -17,7 +17,7 @@ describe('Util Tool', () => {
 	// API test unit
 	test('consoleLog', () => {
 		function testLog(a, b, c, d) {
-			return consoleLog(...arguments);
+			return consoleLog(a, b, c, d);
 		}
 		const args = [1, '2', [3, '3'], {4: 44}];
 		expect(testLog(...args)).toBe('testLog');

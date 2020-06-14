@@ -1,8 +1,7 @@
-import {numberConvertToArray, isNumberPowerOfTwo} from '../../index';
+import {isNumberPowerOfTwo, numberConvertToArray} from '../../index';
 
 test('test', () => {
-  expect(1)
-      .toBe(1);
+  expect(1).toBe(1);
 });
 
 describe.each([
