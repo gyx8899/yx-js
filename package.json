@@ -1,6 +1,6 @@
 {
   "name": "@daybyday/npm-template",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Template for npm package",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
