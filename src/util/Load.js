@@ -247,13 +247,10 @@ function loadResources(urls, callback) {
  * @returns {boolean}
  */
 function checkResourceLoaded(url) {
-	let type = getUrlTypeInfo(url),
-			typeSelector = type['tagName'] || '[src]',
-			allUrls = Array.prototype.slice.call(document.querySelectorAll(typeSelector))
-					.map(function (scriptElement) {
-						return scriptElement[type['urlAttrName']];
-					});
-	return allUrls.indexOf(url) !== -1;
+	let type = getFileNameFromURL(url).extensionName;
+	let selector = (type === 'js' && `script[src="${url}"]`)
+			|| (type === 'css' && `link[href="${url}"]`) || null;
+	return !!selector && !!document.querySelector(selector);
 }
 
 /***
