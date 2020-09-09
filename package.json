@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
-    "commit": "cd ../yx-env && git-commit-push.sh yx-js",
+    "git-push": "cd ../yx-env && git-push.sh yx-js",
     "prepack": "npm run lint && npm run test && npm run build",
     "build": "rollup -c",
     "start": "node webpack.config.js",
