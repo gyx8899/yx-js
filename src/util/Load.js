@@ -473,6 +473,12 @@ const getResources = (urls) => {
 	return Promise.all(resourcesPromise);
 };
 
+const getScriptsInSequence = (urls) => urls.map((url) => () => getScript(url))
+		.reduce((prev, cur) => prev.then(() => cur()), Promise.resolve());
+
+const getStylesInSequence = (urls) => urls.map((url) => () => getStyle(url))
+		.reduce((prev, cur) => prev.then(() => cur()), Promise.resolve());
+
 export {
 	loadScript,
 	loadScriptWithPromise,
@@ -487,4 +493,6 @@ export {
 	getScript,
 	getStyle,
 	getResources,
+	getScriptsInSequence,
+	getStylesInSequence,
 }
