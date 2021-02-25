@@ -360,9 +360,7 @@ function getFileContentWithAjax(url, callback, context) {
 		}
 	});
 }
-function addTimestamp(url, round) {
-	return url + (url.indexOf('?') > -1 ? '&' : '?') + 't=' + parseInt(Date.now() / (round ? round * 1000 : 1));
-}
+
 const getScript = (url) => {
 	return new Promise((resolve, reject) => {
 		if (checkResourceLoaded(url)) {
@@ -372,11 +370,7 @@ const getScript = (url) => {
 				prior = document.getElementsByTagName('script')[0],
 				isIE9 = (document.documentMode === 9),
 				intervalId,
-				timeout = 10 * 1000,
-				round = undefined;
-		if (round) {
-			url = addTimestamp(url, round);
-		}
+				timeout = 10 * 1000;
 
 		script.onload = script.onreadystatechange = script.onerror = function (_, isAbort) {
 			if (_ && _.type === 'error') {
