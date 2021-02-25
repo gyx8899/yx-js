@@ -93,6 +93,7 @@ function loadScript(url, callback, context, info) {
 /***
  * loadScript with Promise
  * @param url
+ * @param type
  * @returns {Promise}
  */
 function loadScriptWithPromise(url, type) {
@@ -188,7 +189,7 @@ function loadCSSWithPromise(url) {
 			resolve(true);
 		};
 		link.onerror = function (error) {
-			reject(new Error(error));
+			reject(new Error(error.message));
 		};
 
 		document.getElementsByTagName('head')[0].appendChild(document.createComment(" Style " + getFileNameFromURL(url).name + " *** CSS "));
@@ -359,10 +360,12 @@ function getFileContentWithAjax(url, callback, context) {
 		}
 	});
 }
-
+function addTimestamp(url, round) {
+	return url + (url.indexOf('?') > -1 ? '&' : '?') + 't=' + parseInt(Date.now() / (round ? round * 1000 : 1));
+}
 const getScript = (url) => {
 	return new Promise((resolve, reject) => {
-		if (isResourceLoaded(url)) {
+		if (checkResourceLoaded(url)) {
 			resolve(true);
 		}
 		let script = document.createElement('script'),
@@ -433,7 +436,7 @@ const getStyle = (url) => {
 		if (!url) {
 			reject(new Error("url is null!"));
 		}
-		if (isResourceLoaded(url)) {
+		if (checkResourceLoaded(url)) {
 			resolve(true);
 		}
 
@@ -445,7 +448,7 @@ const getStyle = (url) => {
 			resolve(true);
 		};
 		link.onerror = function (error) {
-			reject(new Error(error));
+			reject(new Error(error.message));
 		};
 
 		document.getElementsByTagName('head')[0].appendChild(document.createComment(" Style " + getFileNameFromURL(url).name + " *** CSS "));
