@@ -236,6 +236,7 @@ class PopupDismiss extends Event {
 					dismissScopes: dismissScopes
 				};
 
+		// In dismissed status
 		if (eventData.popupTarget.getAttribute(this.attr.dataIsPopup) !== 'true')
 		{
 			this.monitorTap();
@@ -268,6 +269,7 @@ class PopupDismiss extends Event {
 
 			PopupDismiss.setBodyCursorInIOS("pointer");
 		}
+		// In popped up status
 		else
 		{
 			eventData.dismissTrigger = popupTrigger;
@@ -275,14 +277,19 @@ class PopupDismiss extends Event {
 		}
 	}
 
-	dismiss(eventData, isTrigger)
+	/**
+	 * @param eventData
+	 * @param notFromPopupTrigger
+	 */
+	dismiss(eventData, notFromPopupTrigger = false)
 	{
 		if (this.isTap === false)
 			return;
 
-		if (!isTrigger ||
+		if ((!notFromPopupTrigger
+				&& this.notDismissBypass(eventData.dismissTrigger, eventData.popupTrigger)) ||
 				(!Util.hasClosest(eventData.dismissTrigger, eventData.popupTrigger)
-						&& this.isDismissTrigger(eventData.dismissTrigger, eventData.popupTarget)
+						&& this.notDismissBypass(eventData.dismissTrigger, eventData.popupTarget)
 						&& eventData.popupTarget.getAttribute(this.attr.dataIsPopup) === 'true'
 				)
 		)
@@ -334,9 +341,16 @@ class PopupDismiss extends Event {
 		}
 	}
 
-	// Default: all be dismiss trigger(return true);
-	// Check click point ($child) has '[data-popup-dismiss="false"]'('[data-popup-dismiss="true"]') or not;
-	isDismissTrigger(child, parent)
+	/**
+	 * Check if the dismiss trigger (event) should dismiss the popup or bypass
+	 * Default: true, means dismiss normally
+	 * Only when `data-popup-dismiss="false"` being defined on a trigger element, return false
+	 *
+	 * @param child
+	 * @param parent
+	 * @returns {boolean|*}
+	 */
+	notDismissBypass(child, parent)
 	{
 		if (Util.hasClosest(child, parent))
 		{
