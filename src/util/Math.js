@@ -20,7 +20,7 @@ export const factorialOfNumber = (number) =>
         : number * factorialOfNumber(number - 1);
 
 export function hashCode(s) {
-    return s.split("").reduce(function (a, b) {
+    return s.split("").reduce((a, b) => {
         a = (a << 5) - a + b.charCodeAt(0);
         return a & a;
     }, 0);
