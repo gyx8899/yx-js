@@ -1,6 +1,7 @@
 import { dataHash } from "../DataHash";
 
 describe("dataHash component", function () {
+    const bigInt = BigInt(9007199254740991);
     const baseData = [
         {
             describe: "number",
@@ -23,6 +24,7 @@ describe("dataHash component", function () {
             datas: [
                 "{a:123,b:'vvvv',c: true, d: undefined, e: [1, 2, 'c']}",
                 "{name:'kyle', age: 22}",
+                "{ a: String.fromCharCode(0x2028),b: String.fromCharCode(0x2029)}",
             ],
         },
     ];
@@ -73,5 +75,8 @@ describe("dataHash component", function () {
         }
     }
 
-    test("Data: number", () => {});
+    test("Data: BigInt error for JSON.stringify", () => {
+        console.log("Normal Case: for catch error!");
+        expect(dataHash.compare(bigInt)).not.toBeTruthy();
+    });
 });
