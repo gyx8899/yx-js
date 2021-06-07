@@ -14,20 +14,24 @@ class DataHash {
 
     getHashCode(data) {
         let hashCode = "";
-        try {
-            hashCode = getStringHashCode(JSON.stringify(data));
-        } catch (err) {
-            console.error("error: ", err);
+        if (data !== undefined) {
+            try {
+                hashCode = getStringHashCode(JSON.stringify(data));
+            } catch (err) {
+                console.error("error: ", err);
+            }
         }
+
         return hashCode;
     }
 
-    compare(data, { id = "_" }) {
+    compare(data, options) {
         let isEqual = false;
+        const id = (options && options.id) || "_";
         const prevHashCode = this.hashCode[id];
         const nextHashCode = this.getHashCode(data);
         isEqual = prevHashCode === nextHashCode;
-        this.hashCode[id] = newHashCode;
+        this.hashCode[id] = nextHashCode;
 
         return isEqual;
     }
