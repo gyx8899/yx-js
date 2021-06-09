@@ -25,19 +25,30 @@ class DataHash {
         return hashCode;
     }
 
-    compare(data, options) {
+    compare(data, options = {}) {
         let isEqual = false;
         const id = (options && options.id) || "_";
         const prevHashCode = this.hashCode[id];
-        const nextHashCode = this.getHashCode(data);
-        isEqual = prevHashCode === nextHashCode;
-        this.hashCode[id] = nextHashCode;
+        if (prevHashCode === undefined && options.enablePerformance !== false) {
+            const that = this;
+            this.timeout = setTimeout(() => {
+                that.hashCode[id] = that.getHashCode(data);
+            }, 10);
+        } else {
+            const nextHashCode = this.getHashCode(data);
+            isEqual = prevHashCode === nextHashCode;
+            this.hashCode[id] = nextHashCode;
+        }
 
         return isEqual;
     }
 
     destroy() {
         this.hashCode = {};
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        }
     }
 }
 
