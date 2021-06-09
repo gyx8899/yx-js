@@ -48,7 +48,7 @@ describe("dataHash component", function () {
     const caseTest = function (desc, data, comparedData) {
         test(desc, function () {
             // 初始值比较相等，没得比，即不相等
-            expect(dataHash.compare(data)).not.toBeTruthy();
+            expect(dataHash.compare(data, {enablePerformance: false})).not.toBeTruthy();
             // 第一次比较相等，与同一个数据，即相等
             expect(dataHash.compare(data)).toBeTruthy();
             // 第二次比较相等，与不同数据比，即不等
