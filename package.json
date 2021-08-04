@@ -1,7 +1,7 @@
 {
-  "name": "@daybyday/yx-js",
+  "name": "yx-js",
   "version": "1.0.1",
-  "description": "YX-JS: common js Functions, ES Class.",
+  "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
@@ -17,10 +17,7 @@
     "type": "git",
     "url": "https://github.com/gyx8899/yx-js.git"
   },
-  "keywords": [
-    "YX",
-    "js"
-  ],
+  "keywords": [],
   "author": "Kate Kuo",
   "license": "MIT",
   "devDependencies": {
