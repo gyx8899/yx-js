@@ -1,6 +1,8 @@
 function getStringHashCode(s) {
-    return s.split("").reduce((a, b) => {
+    return s.split('').reduce((a, b) => {
+        // eslint-disable-next-line no-bitwise, no-param-reassign
         a = (a << 5) - a + b.charCodeAt(0);
+        // eslint-disable-next-line no-bitwise
         return a & a;
     }, 0);
 }
@@ -13,12 +15,12 @@ class DataHash {
     }
 
     getHashCode(data) {
-        let hashCode = "";
+        let hashCode = '';
         if (data !== undefined) {
             try {
                 hashCode = getStringHashCode(JSON.stringify(data));
             } catch (err) {
-                console.error("error: ", err);
+                console.error('error: ', err);
             }
         }
 
@@ -27,7 +29,7 @@ class DataHash {
 
     compare(data, options = {}) {
         let isEqual = false;
-        const id = (options && options.id) || "_";
+        const id = (options && options.id) || '_';
         const prevHashCode = this.hashCode[id];
         if (prevHashCode === undefined && options.enablePerformance !== false) {
             const that = this;

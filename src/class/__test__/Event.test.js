@@ -179,7 +179,7 @@ describe('Event component', function () {
 		test(`Event.on(key, fn), ${fn} is not a function`, function () {
 			expect(() => {
 				eventInstance.on('keyFn', fn);
-			}).toThrowError(`Your listen on ${fn} is not one valid function!`);
+			}).toThrowError(`${fn} is not one valid function!`);
 		});
 	}, fns = [undefined, 1, '1', {'1': '1'}, []];
 	fns.forEach((fn) => {

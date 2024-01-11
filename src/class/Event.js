@@ -1,5 +1,5 @@
 /**
- * Event v1.1.3.20200321
+ * Event v1.2.0.20240111
  */
 class Event {
 	constructor() {
@@ -23,7 +23,7 @@ class Event {
 				delete this.unread[key];
 			}
 		} else {
-			throw new Error(`Your listen on ${fn} is not one valid function!`);
+			throw new Error(`${fn} is not one valid function!`);
 		}
 
 		return this;
@@ -55,16 +55,17 @@ class Event {
 		const key = _key;
 		const args = [].slice.call(rest);
 		const cacheFns = this.cache[key];
+    let result = null;
 		if (cacheFns) {
 			cacheFns.forEach((fn) => {
-				fn.call(this, ...args);
+				result = fn.call(this, ...args);
 			});
 		} else {
 			this.unread[key] = this.unread[key] || [];
 			this.unread[key].push(rest);
 		}
 
-		return this;
+		return result;
 	}
 
 	destroy() {
