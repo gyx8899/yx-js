@@ -11,7 +11,7 @@
     "start": "node webpack.config.js",
     "lint": "eslint src/**/*.js",
     "test": "cross-env BABEL_ENV=test jest --passWithNoTests --coverage",
-    "publish": "publish.sh"
+    "publish": "chmod +x publish.sh && ./publish.sh"
   },
   "repository": {
     "type": "git",
